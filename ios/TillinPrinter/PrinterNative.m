@@ -148,6 +148,22 @@ RCT_EXPORT_METHOD(printEscPosText:(NSString *)raw
   [self sendData:data resolver:resolve rejecter:reject];
 }
 
+RCT_EXPORT_METHOD(printEscPosBase64:(NSString *)base64
+                  resolver:(RCTPromiseResolveBlock)resolve
+                  rejecter:(RCTPromiseRejectBlock)reject) {
+  NSString *clean = base64;
+  NSRange commaRange = [base64 rangeOfString:@","];
+  if (commaRange.location != NSNotFound) {
+    clean = [base64 substringFromIndex:commaRange.location + 1];
+  }
+  NSData *data = [[NSData alloc] initWithBase64EncodedString:clean options:0];
+  if (!data) {
+    reject(@"E_ESC_POS", @"Invalid base64 payload", nil);
+    return;
+  }
+  [self sendData:data resolver:resolve rejecter:reject];
+}
+
 RCT_EXPORT_METHOD(printEscPosSample:(RCTPromiseResolveBlock)resolve
                   rejecter:(RCTPromiseRejectBlock)reject) {
   NSString *path = [[NSBundle mainBundle] pathForResource:@"esc_pos_exemple" ofType:@"txt"];

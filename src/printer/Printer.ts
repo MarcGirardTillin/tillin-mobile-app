@@ -33,6 +33,7 @@ const { PrinterNative } = NativeModules as {
       options?: Record<string, unknown>
     ) => Promise<boolean>;
     printEscPosSample: () => Promise<boolean>;
+    printEscPosBase64: (base64: string) => Promise<boolean>;
   };
 };
 
@@ -64,6 +65,8 @@ export const Printer = {
   printEscPosText: (raw: string, options?: Record<string, unknown>) =>
     PrinterNative.printEscPosText(raw, options),
   printEscPosSample: () => PrinterNative.printEscPosSample(),
+  printEscPosBase64: (base64: string) =>
+    PrinterNative.printEscPosBase64(base64),
   onBleDevices: (handler: (devices: Array<{ name: string; uuid: string }>) => void) =>
     emitter.addListener('PrinterBleDevices', handler),
   onBleState: (handler: (state: { connected: boolean }) => void) =>

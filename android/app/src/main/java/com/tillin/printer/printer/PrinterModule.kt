@@ -262,6 +262,16 @@ class PrinterModule(private val reactContext: ReactApplicationContext) :
   }
 
   @ReactMethod
+  fun printEscPosBase64(base64: String, promise: Promise) {
+    if (!ensureConnected(promise)) return
+    withBinder(promise) { binder ->
+      val clean = base64.substringAfter("base64,", base64)
+      val bytes = Base64.decode(clean, Base64.DEFAULT)
+      binder.write(bytes, uiCallback(promise))
+    }
+  }
+
+  @ReactMethod
   fun printEscPosSample(promise: Promise) {
     if (!ensureConnected(promise)) return
     val text = readAssetText("esc_pos_exemple.txt")

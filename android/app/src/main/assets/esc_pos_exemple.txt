@@ -1,0 +1,48 @@
+\x1B\x40                          ; Initialize
+\x1B\x74\x13                      ; Code page CP858 (may vary by printer)
+\x1B\x61\x01                      ; Align center
+
+JoggingJogging Marseille\n
+107 Rue Paradis\n
+13006 - Marseille\n
+
+\x1B\x45\x01                      ; Bold ON
+Ticket de caisse\n
+\x1B\x45\x00                      ; Bold OFF
+
+\x1B\x61\x00                      ; Align left
+Vente n°64405\n
+Mercredi 28 Janvier 2026 à 15:47\n
+Client SONIA CHABAS\n
+\n
+Baskets En Daim - Dr        212,50€\n
+Réf : 252-011722-126          50,00%\n
+Tan / 40                     425,00€\n
+1x212,50€\n
+\n
+TVA 20%                       35,42€\n
+\n
+\x1B\x45\x01
+Moyen de paiement\n
+\x1B\x45\x00
+CB                            212,50€\n
+\n
+\x1B\x45\x01
+Total TTC                     212,50€\n
+\x1B\x45\x00
+Total HT                      177,08€\n
+Dont TVA                       35,42€\n
+\n
+Vendeur : ROBERTO\n
+\n
+\x1B\x61\x01                  ; Align center
+Suivez-nous sur Instagram\n
+@jogging_marseille et Facebook. Les\n
+échanges et avoirs sont à effectuer\n
+dans un délai de 15 jours. Les avoirs\n
+sont valables 1 an. Retrouvez nous\n
+aussi, sur www.joggingjogging.com\n
+
+\n\n\n
+\x1D\x56\x41\x10               ; Cut (partial cut, feed=0x10)
+
